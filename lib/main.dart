@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 import './transaction.dart';
 
@@ -41,20 +43,42 @@ class MyHomePage extends StatelessWidget {
                   color: Colors.blue,
                 ),
               ),
+              Card(
+                elevation: 5,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      TextField(
+                        decoration: InputDecoration(labelText: 'Title'),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(labelText: 'Amount'),
+                      ),
+                      FlatButton(
+                        child: Text('Add Transaction'),
+                        textColor: Colors.purple,
+                        onPressed: () => {},
+                      )
+                    ],
+                  ),
+                ),
+              ),
               Column(
                 children: transactions.map((tx) {
                   return Card(
                     child: Row(
                       children: <Widget>[
                         Container(
-                          width: 80,
+                          width: 100,
                           margin: EdgeInsets.symmetric(
                             vertical: 10,
                             horizontal: 15,
                           ),
                           child: Center(
                             child: Text(
-                              tx.amount.toString(),
+                              '\$ ${tx.amount}',
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.deepPurple,
@@ -79,7 +103,7 @@ class MyHomePage extends StatelessWidget {
                                 fontSize: 18,
                               ),
                             ),
-                            Text(tx.date.toLocal().toString(),
+                            Text(DateFormat.yMd().format(tx.date),
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey,
