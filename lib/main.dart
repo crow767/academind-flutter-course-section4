@@ -18,27 +18,39 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter App'),
-        ),
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  child: Card(
-                    child: Text(
-                      'CHART!',
-                    ),
-                    elevation: 10,
-                    color: Colors.blue,
+      appBar: AppBar(
+        title: Text('Flutter App'),
+        actions: <IconButton>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () => {},
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                child: Card(
+                  child: Text(
+                    'CHART!',
                   ),
+                  elevation: 10,
+                  color: Colors.blue,
                 ),
-                UserTransactions(),
-              ],
-            ),
+              ),
+              UserTransactions(),
+            ],
           ),
-        ));
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => {},
+      ),
+    );
   }
 }
